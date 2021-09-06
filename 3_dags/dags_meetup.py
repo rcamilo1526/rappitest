@@ -89,7 +89,7 @@ TECHNO_TOPICS_SQL = (
 #7
 CREATE_TEMP_TABLE_SQL=(
     "create or replace table aux.temp_best_rated_venues as "
-    "select venue_id, address_1 as address,city, normalised_rating, "  
+    "select venue_id, venue_name,city, normalised_rating, "  
     "getdate() as date_in_top from venues order by normalised_rating "+
     "desc limit 15;"
 )
@@ -97,8 +97,8 @@ MERGE_TABLE_SQL=(
     "merge into aux.best_rated_venues as target using aux.temp_best_rated_venues as source "+
     "on source.venue_id = target.venue_id "+
     "when not matched then "+
-        "INSERT (venue_id,address, city,normalised_rating,date_in_top) "+
-        "VALUES (source.venue_id,source.address,source.city,source.normalised_rating,source.date_in_top);"
+        "INSERT (venue_id,venue_name, city,normalised_rating,date_in_top) "+
+        "VALUES (source.venue_id,source.venue_name,source.city,source.normalised_rating,source.date_in_top);"
 )
 DROP_TEMP_TABLE_SQL=(
     "drop table aux.temp_best_rated_venues;"
