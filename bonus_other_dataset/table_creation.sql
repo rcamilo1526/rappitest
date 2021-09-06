@@ -1,12 +1,12 @@
 
-create table "ADVENTUREWORKS"."PUBLIC"."CountryRegionCurrency"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."COUNTRYREGIONCURRENCY"(
     countryregioncode text,
     currencycode text,
     modifiedtimestamp timestamp
 );
 
 
-create table "ADVENTUREWORKS"."PUBLIC"."CurrencyRate"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."CURRENCYRATE"(
     currencyrateid  numeric,
     currencyratetimestamp timestamp,
     fromcurrencycode text,
@@ -16,7 +16,7 @@ create table "ADVENTUREWORKS"."PUBLIC"."CurrencyRate"(
     modifiedtimestamp timestamp
 );
 
-create table "ADVENTUREWORKS"."PUBLIC"."Product"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."PRODUCT"(
     productid text primary key,
     name text,
     productnumber text,
@@ -44,33 +44,33 @@ create table "ADVENTUREWORKS"."PUBLIC"."Product"(
     modifiedtimestamp timestamp
 );
 
-create table "ADVENTUREWORKS"."PUBLIC"."ProductCategory"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."PRODUCTCATEGORY"(
     productcategoryid numeric primary key,
     name text,
     rowguid text,
     modifiedtimestamp timestamp
 );
-create table "ADVENTUREWORKS"."PUBLIC"."ProductDescription"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."PRODUCTDESCRIPTION"(
     productdescriptionid numeric primary key,
     description text,
     rowguid text,
     modifiedtimestamp timestamp
 );
-create table "ADVENTUREWORKS"."PUBLIC"."ProductModelProductDescriptionCulture"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."PRODUCTMODELPRODUCTDESCRIPTIONCULTURE"(
     productmodelid numeric,
     productdescriptionid numeric,
     cultureid text,
     modifiedtimestamp timestamp
 );
 
-create table "ADVENTUREWORKS"."PUBLIC"."ProductSubCategory"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."PRODUCTSUBCATEGORY"(
     productsubcategoryid numeric primary key,
     productcategoryid numeric,
     name text,
     rowguid text,
     modifiedtimestamp timestamp
 );
-create table "ADVENTUREWORKS"."PUBLIC"."salesorderdetail"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."SALESORDERDETAIL"(
     salesorderid numeric,
     salesorderdetailid numeric,
     carriertrackingnumber text,
@@ -82,12 +82,12 @@ create table "ADVENTUREWORKS"."PUBLIC"."salesorderdetail"(
     rowguid text,
     modifiedtimestamp timestamp
 );
-create table "ADVENTUREWORKS"."PUBLIC"."SalesOrderHeader"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."SALESORDERHEADER"(
     salesorderid numeric primary key,
     revisionnumber numeric,
-    ordertimestamp timestamp,
-    duetimestamp timestamp,
-    shiptimestamp timestamp,
+    orderdate date,
+    duedate timestamp,
+    shipdate date,
     status numeric,
     onlineorderflag  text,
     purchaseordernumber text,
@@ -109,7 +109,7 @@ create table "ADVENTUREWORKS"."PUBLIC"."SalesOrderHeader"(
     rowguid text,
     modifiedtimestamp timestamp
 );
-create table "ADVENTUREWORKS"."PUBLIC"."salesperson"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."SALESPERSON"(
     businessentityid numeric,
     territoryid numeric,
     salesquota numeric,
@@ -120,7 +120,7 @@ create table "ADVENTUREWORKS"."PUBLIC"."salesperson"(
     rowguid text,
     modifiedtimestamp timestamp
 );
-create table "ADVENTUREWORKS"."PUBLIC"."salesterritory"(
+create or replace table "ADVENTUREWORKS"."PUBLIC"."SALESTERRITORY"(
     territoryid numeric primary key,
     name text,
     countryregioncode text,
