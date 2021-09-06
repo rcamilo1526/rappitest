@@ -195,7 +195,7 @@ with DAG("dags_meetup", start_date=days_ago(2),
     starting_slack_report = SnowflakeToSlackOperator(
         task_id="starting_slack_report",
         sql=SNOWFLAKE_SLACK_SQL,
-        slack_message="Update proccess started \uD83E\uDD14 \uD83E\uDD1E",
+        slack_message="Update process started \uD83E\uDD14 \uD83E\uDD1E",
         snowflake_conn_id=SNOWFLAKE_CONN_ID,
         slack_conn_id=SLACK_CONN_ID,
     )
@@ -210,21 +210,21 @@ with DAG("dags_meetup", start_date=days_ago(2),
     insert_slack_report = SnowflakeToSlackOperator(
         task_id="insert_slack_report",
         sql=SNOWFLAKE_SLACK_SQL,
-        slack_message="The data was correctly inserted in snowflake \u2744 tables \uD83D\uDE00 ",
+        slack_message="The data were correctly inserted in snowflake \u2744 table \uD83D\uDE00 ",
         snowflake_conn_id=SNOWFLAKE_CONN_ID,
         slack_conn_id=SLACK_CONN_ID,
     )
     merge_slack_report = SnowflakeToSlackOperator(
         task_id="merge_slack_report",
         sql=SNOWFLAKE_SLACK_SQL,
-        slack_message="The data was correctly merged in snowflake \u2744 tables \uD83D\uDE04 ",
+        slack_message="The data were correctly merged in snowflake \u2744 table \uD83D\uDE04 ",
         snowflake_conn_id=SNOWFLAKE_CONN_ID,
         slack_conn_id=SLACK_CONN_ID,
     )
     final_slack_report = SnowflakeToSlackOperator(
         task_id="final_slack_report",
         sql=SNOWFLAKE_SLACK_SQL,
-        slack_message="All the operatins was done correctly in snowflake \u2744 \uD83E\uDD73",
+        slack_message="All operations have been carried out correctly in snowflake \u2744 \uD83E\uDD73",
         snowflake_conn_id=SNOWFLAKE_CONN_ID,
         slack_conn_id=SLACK_CONN_ID,
     )
